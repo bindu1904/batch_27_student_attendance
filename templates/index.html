@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Attendance Prediction</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background-image:url("https://img.freepik.com/free-vector/school-students-blackboard-girls-young-woman-holding-huge-pencils-raising-hands-flat-illustration_74855-11037.jpg?semt=ais_hybrid&w=740&q=80");
+background-size:cover;
+background-position:center;
+margin:0;
+padding:0;
+}
+
+.overlay{
+background:rgba(0,0,0,0.5);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:rgba(255,255,255,0.9);
+padding:40px;
+border-radius:15px;
+width:450px;
+box-shadow:0px 10px 25px rgba(0,0,0,0.4);
+}
+
+h2{
+text-align:center;
+color:#333;
+margin-bottom:25px;
+}
+
+label{
+font-weight:bold;
+color:#333;
+}
+
+select, textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+margin-bottom:15px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+textarea{
+resize:none;
+}
+
+button{
+width:100%;
+background:#4CAF50;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#2e7d32;
+}
+
+.result{
+margin-top:20px;
+padding:15px;
+background:#e3f2fd;
+border-left:5px solid #2196f3;
+font-size:18px;
+text-align:center;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="container">
+
+<h2>🎓 Student Attendance Predictor</h2>
+
+<form action="/predict" method="post">
+
+<label>Class Time</label>
+<select name="class_time" required>
+<option value="" disabled selected>Select Class Time</option>
+<option value="0">Morning</option>
+<option value="1">Afternoon</option>
+<option value="2">Evening</option>
+</select>
+
+<label>Day</label>
+<select name="day" required>
+<option value="" disabled selected>Select Day</option>
+<option value="0">Mon</option>
+<option value="1">Tue</option>
+<option value="2">Wed</option>
+<option value="3">Thu</option>
+<option value="4">Fri</option>
+</select>
+
+<label>Subject Difficulty</label>
+<select name="subject_difficulty" required>
+<option value="" disabled selected>Select Difficulty</option>
+<option value="0">Easy</option>
+<option value="1">Medium</option>
+<option value="2">Hard</option>
+</select>
+
+<label>Teaching Style</label>
+<select name="teaching_style" required>
+<option value="" disabled selected>Select Teaching Style</option>
+<option value="0">Interactive</option>
+<option value="1">Lecture</option>
+</select>
+
+<label>Weather</label>
+<select name="weather" required>
+<option value="" disabled selected>Select Weather</option>
+<option value="0">Sunny</option>
+<option value="1">Rainy</option>
+</select>
+
+<label>Student Interest</label>
+<select name="student_interest" required>
+<option value="" disabled selected>Select Interest</option>
+<option value="0">Low</option>
+<option value="1">Medium</option>
+<option value="2">High</option>
+</select>
+
+<label>Exam Near</label>
+<select name="exam_near" required>
+<option value="" disabled selected>Select Option</option>
+<option value="0">No</option>
+<option value="1">Yes</option>
+</select>
+
+<label>Feedback</label>
+<textarea name="feedback" rows="3" placeholder="Enter student feedback..." required></textarea>
+
+<button type="submit">Predict Attendance</button>
+
+</form>
+
+{% if prediction %}
+<div class="result">
+Predicted Attendance: {{prediction}}
+</div>
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>
